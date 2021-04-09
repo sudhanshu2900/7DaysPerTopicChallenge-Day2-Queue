@@ -18,9 +18,8 @@ SOLUTION:
 using namespace std;
 
 int main() {
-    
 	int t,n;
-
+	
 	cin>>t;
 	while(t--){
 	    cin>>n;
@@ -28,9 +27,10 @@ int main() {
 	    for(int i=1;i<=n;i++){
 	        q.push(i);
 	    }
-	    while(q.size()!=1){
-	        q.push(q.front());
+	    while(q.size()>1){
+	        int res=q.front();
 	        q.pop();
+	        q.push(res);
 	        q.pop();
 	    }
 	    cout<<q.front()<<endl;
