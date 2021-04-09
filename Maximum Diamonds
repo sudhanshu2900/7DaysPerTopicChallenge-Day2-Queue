@@ -1,0 +1,40 @@
+PROBLEM: N = 5, K = 3
+         A[] = {2, 1, 7, 4, 2}
+Output:
+       14
+Explanation:
+            The state of bags is:
+            2 1 7 4 2
+            You take all diamonds from Third bag (7).
+            The state of bags becomes: 2 1 3 4 2 
+            Take all diamonds from Fourth bag (4).
+            The state of bags becomes: 2 1 3 2 2
+            Take all diamonds from Third bag (3).
+            The state of bags becomes: 2 1 1 2 2 
+            Hence, number of Diamonds = 7+4+3 = 14.
+            
+            
+            
+SOLUTION:
+
+    int maxDiamonds(int A[], int N, int K) {
+        int MaxSum=0, ele=0;
+        priority_queue<int> pq;
+        for(int i=0;i<N;i++){
+            pq.push(A[i]);
+        }
+        while(K--){
+            
+            MaxSum=MaxSum+pq.top();
+            ele=pq.top();
+            pq.pop();
+            pq.push(ele/2);
+        }
+        return MaxSum;
+    }
+    
+    
+    
+    
+    
+    
